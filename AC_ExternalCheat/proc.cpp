@@ -1,7 +1,7 @@
 #include "proc.h"
 #include <iostream>
 
-// procName starting value: address to first letter in the array.
+// procName starting value: address to first letter in the array of chars.
 DWORD GetProcId(const wchar_t* procName)
 {
 	// Initialize procId variable & get handle to list containing all running processes in the system.
@@ -11,7 +11,7 @@ DWORD GetProcId(const wchar_t* procName)
 	// Check if hSnap is valid.
 	if (hSnap != INVALID_HANDLE_VALUE)
 	{
-		// Return struct containing the values of a snapped process.
+		// Create struct of type PROCESSENTRY32 which contains information about a process.
 		PROCESSENTRY32 procEntry;
 
 		// Gets the size of the struct, if we don't do it we can't use Process32First().
