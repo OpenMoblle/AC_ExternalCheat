@@ -1,14 +1,14 @@
 #include "proc.h"
 #include <iostream>
 
-// procName starting value: address to first letter in the array of chars.
+// procName starting value is a address to first letter in the array of chars, the reason for that is because the compiler treats wchar_t* as a explicit pointer.
 DWORD GetProcId(const wchar_t* procName)
 {
-	// Initialize procId variable & get handle to list containing all running processes in the system.
+	// Initialize procId variable & get a handle to a list containing all running processes in the system.
 	DWORD procId = 0;
 	HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 
-	// Check if hSnap is valid.
+	// Check if our processes snapshot was created successfully.
 	if (hSnap != INVALID_HANDLE_VALUE)
 	{
 		// Create struct of type PROCESSENTRY32 which contains information about a process.
